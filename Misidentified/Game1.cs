@@ -36,7 +36,7 @@ namespace Misidentified
             camera = new FirstPersonCamera(GraphicsDevice);
             IsMouseVisible = false;
             player = new Player();
-            player.Position = new Vector3(0, 1.8f, 0); // Start slightly above the ground
+            player.Position = new Vector3(2, 2, -5); // Start slightly above the ground
             base.Initialize();
         }
 
@@ -48,8 +48,11 @@ namespace Misidentified
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             debugFont = Content.Load<SpriteFont>("Fonts/DebugFont");
+            tileset = Content.Load<Texture2D>("Graphics/Tilesets/TextureAtlas01");
+
+
             effect = new BasicEffect(GraphicsDevice);
-            effect.TextureEnabled = true;
+            effect.TextureEnabled = false;              // TEMPORARY: Disable texturing for now
             effect.Texture = tileset;
             effect.LightingEnabled = false;
 
@@ -58,7 +61,7 @@ namespace Misidentified
             map.Load("Content/Maps/map.tmx");
 
             // Load tileset texture (export from Tiled)
-            tileset = Content.Load<Texture2D>("Graphics/Tilesets/TextureAtlas01");
+           
         }
 
         // ............
@@ -91,11 +94,17 @@ namespace Misidentified
         {
             effect.View = camera.View;
             effect.Projection = camera.Projection;
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.CornflowerBlue, 1f, 0);
 
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(debugFont, debugText, new Vector2(10, 10), Color.White);
+            spriteBatch.DrawString(debugFont, debugText, new Vector2(10, 10), Color.White); // Debug UI
+
+            spriteBatch.End();
+
+            GraphicsDevice.DepthStencilState = DepthStencilState.Default;
+            GraphicsDevice.RasterizerState = new RasterizerState { CullMode = CullMode.CullCounterClockwiseFace };
+
             // Draw layers in order
             for (int y = 0; y < map.Height; y++)
             {
@@ -124,10 +133,6 @@ namespace Misidentified
                     cube.Draw(GraphicsDevice, effect, world);
                 }
             }
-
-
-            spriteBatch.End();
-            
 
             base.Draw(gameTime);
         }

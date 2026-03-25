@@ -12,10 +12,21 @@ namespace Misidentified
 
         public float MouseSensitivity = 0.0025f;
 
-        public Matrix View =>
-            Matrix.CreateRotationX(Pitch) *
-            Matrix.CreateRotationY(Yaw) *
-            Matrix.CreateTranslation(-Position);
+        public Matrix View
+        {
+            get
+            {
+                // Build a rotation quaternion using yaw/pitch
+                var rotation = Quaternion.CreateFromYawPitchRoll(Yaw, Pitch, 0);
+
+                // Forward vector from rotation
+                Vector3 forward = Vector3.Transform(Vector3.Forward, rotation);
+                Vector3 up = Vector3.Transform(Vector3.Up, rotation);
+
+                // Camera looks from Position to Position + forward
+                return Matrix.CreateLookAt(Position, Position + forward, up);
+            }
+        }
 
         public Matrix Projection { get; private set; }
 
