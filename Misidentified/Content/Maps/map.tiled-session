@@ -1,0 +1,44 @@
+{
+    "activeFile": "map.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "C:/Users/osbor/OneDrive/Desktop/Levels/level_01.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map.tmx": {
+            "scale": 0.4334375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 421.0526315789474,
+                "y": 248.01730353280465
+            }
+        },
+        "map.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map_tileset.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Users/osbor/OneDrive/Documents/MonoGame Projects/Misidentified/Misidentified/Content/Maps",
+    "last.externalTilesetPath": "C:/Users/osbor/OneDrive/Documents/MonoGame Projects/Misidentified/Misidentified/Content/Maps",
+    "last.imagePath": "C:/Users/osbor/OneDrive/Documents/MonoGame Projects/Misidentified/Misidentified/Content/Graphics/Tilesets",
+    "map.lastUsedExportFilter": "Tiled map files (*.tmx *.xml)",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "map.tmx"
+    ],
+    "project": "map.tiled-project",
+    "recentFiles": [
+        "map.tmx",
+        "C:/Users/osbor/OneDrive/Desktop/Levels/level_01.tsx",
+        "map.tsx",
+        "map_tileset.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
